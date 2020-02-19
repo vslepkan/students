@@ -1,6 +1,6 @@
 let xhr = new XMLHttpRequest();
 
-xhr.open("GET", "https://jsonplaceholder.typicode.com/users1");
+xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
 
 xhr.responseType = "json";
 
