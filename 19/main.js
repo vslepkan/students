@@ -18,5 +18,21 @@ function createBox(array, main) {
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  createBox(form.elements, main);
+  // createBox(form.elements, main);
+  let state = {};
+
+  Array.from(form.elements).forEach(input => {
+    if (input.value) {
+      state[input.name] = input.value;
+    }
+  });
+
+  xhr(
+    "POST",
+    "https://jsonplaceholder.typicode.com/users",
+    function() {
+      console.log(this.response);
+    },
+    JSON.stringify(state)
+  );
 });
