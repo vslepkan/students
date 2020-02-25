@@ -30,9 +30,6 @@ form.addEventListener("submit", e => {
   xhr(
     "POST",
     "https://jsonplaceholder.typicode.com/users",
-    function() {
-      console.log(this.response);
-    },
     JSON.stringify(state)
-  );
+  ).catch(error => console.log(error));
 });
