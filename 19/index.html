@@ -10,6 +10,12 @@
         display: block;
         margin-bottom: 10px;
       }
+
+      .comment {
+        border: 1px solid rebeccapurple;
+        padding: 0 20px;
+        margin-top: 20px;
+      }
     </style>
   </head>
   <body>
@@ -18,7 +24,7 @@
         <input type="text" name="name" placeholder="name" />
         <input type="email" name="email" placeholder="email" />
         <input type="text" name="company" placeholder="company" />
-        <input name="date" type="date" />
+        <textarea name="comment" cols="50" rows="5"></textarea>
         <select name="pets" id="pet-select">
           <option value="">--Please choose an option--</option>
           <option value="dog">Dog</option>

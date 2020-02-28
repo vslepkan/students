@@ -39,11 +39,11 @@ function albumsLoad(response) {
   });
 }
 
-xhr("GET", "https://jsonplaceholder.typicode.com/users")
-  .then(res => usersLoad(res))
-  .then(() => {
-    xhr("GET", "https://jsonplaceholder.typicode.com/albums")
-      .then(res => albumsLoad(res))
-      .catch(error => console.log(error));
-  })
-  .catch(error => console.log("Users: ", error));
+// xhr("GET", "https://jsonplaceholder.typicode.com/users")
+//   .then(res => usersLoad(res))
+//   .then(() => {
+//     xhr("GET", "https://jsonplaceholder.typicode.com/albums")
+//       .then(res => albumsLoad(res))
+//       .catch(error => console.log(error));
+//   })
+//   .catch(error => console.log("Users: ", error));

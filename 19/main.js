@@ -1,24 +1,30 @@
 let main = document.querySelector("main");
 let form = document.forms[0];
 
-function createBox(array, main) {
+function createElement(tag = "p", content) {
+  let element = document.createElement(tag);
+  element.textContent = content;
+
+  return element;
+}
+
+function createBox(response) {
+  localStorage.setItem("comment", JSON.stringify(response));
+
+  let { name, email, comment, company } = response;
   let div = document.createElement("div");
+  div.classList.add("comment");
 
-  [...array].forEach(element => {
-    let p = document.createElement("p");
-
-    if (element.value) {
-      p.innerText = element.value;
-      div.append(p);
-    }
-  });
+  div.append(createElement("p", name));
+  div.append(createElement("p", company));
+  div.append(createElement("p", email));
+  div.append(createElement("p", comment));
 
   main.append(div);
 }
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  // createBox(form.elements, main);
   let state = {};
 
   Array.from(form.elements).forEach(input => {
@@ -31,5 +37,15 @@ form.addEventListener("submit", e => {
     "POST",
     "https://jsonplaceholder.typicode.com/users",
     JSON.stringify(state)
-  ).catch(error => console.log(error));
+  )
+    .then(createBox)
+    .catch(error => console.log(error));
 });
+
+function showComment() {
+  let comment = localStorage.getItem("comment");
+
+  comment ? createBox(JSON.parse(comment)) : null;
+}
+
+document.addEventListener("DOMContentLoaded", showComment);
