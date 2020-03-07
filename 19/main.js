@@ -33,11 +33,14 @@ form.addEventListener("submit", e => {
     }
   });
 
-  xhr(
-    "POST",
-    "https://jsonplaceholder.typicode.com/users",
-    JSON.stringify(state)
-  )
+  fetch("https://jsonplaceholder.typicode.com/users", {
+    method: "POST",
+    body: JSON.stringify(state),
+    headers: {
+      "Content-type": "application/json"
+    }
+  })
+    .then(res => res.json())
     .then(createBox)
     .catch(error => console.log(error));
 });

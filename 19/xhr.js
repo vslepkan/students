@@ -16,12 +16,14 @@ function xhr(method, url, body = null) {
   });
 }
 
-function usersLoad(response = []) {
-  response.forEach(element => {
+function usersLoad({ info, results = [] }) {
+  results.forEach(element => {
+    let { name, status, species } = element;
+
     let p = document.createElement("p");
     let ul = document.createElement("ul");
     p.setAttribute("data-id", element.id);
-    p.innerText = `${element.name} / ${element.email} / ${element.company.name}`;
+    p.innerText = `${name} / ${status} / ${species}`;
     p.append(ul);
 
     document.body.append(p);
@@ -39,11 +41,7 @@ function albumsLoad(response) {
   });
 }
 
-// xhr("GET", "https://jsonplaceholder.typicode.com/users")
-//   .then(res => usersLoad(res))
-//   .then(() => {
-//     xhr("GET", "https://jsonplaceholder.typicode.com/albums")
-//       .then(res => albumsLoad(res))
-//       .catch(error => console.log(error));
-//   })
-//   .catch(error => console.log("Users: ", error));
+fetch("https://rickandmortyapi.com/api/character/?page=2")
+  .then(res => res.json())
+  .then(data => usersLoad(data))
+  .catch(error => console.log("Users: ", error));
