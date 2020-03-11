@@ -1,0 +1,12 @@
+.button {
+  border: none;
+  box-shadow: 1px 1px 1px white;
+
+  &:hover {
+    border: 1px solid rebeccapurple;
+  }
+}
+
+.button--purple {
+  background-color: rebeccapurple;
+}

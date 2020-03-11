@@ -1,0 +1,19 @@
+.button {
+  border: none;
+  box-shadow: 1px 1px 1px white; }
+  .button:hover {
+    border: 1px solid rebeccapurple; }
+
+.button--purple {
+  background-color: rebeccapurple; }
+
+.menu {
+  opacity: 0.3;
+  margin: 0; }
+
+.menu__item {
+  color: paleturquoise;
+  width: 200px; }
+
+.menu__link {
+  color: black; }
