@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lazy load</title>
+    <style>
+      body {
+        height: 3000px;
+      }
+
+      img {
+        display: block;
+        height: auto;
+        width: 400px;
+        height: 400px;
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <img data-src="https://picsum.photos/id/238/400" alt="" />
+    <img data-src="https://picsum.photos/id/233/400" alt="" />
+    <img data-src="https://picsum.photos/id/235/400" alt="" />
+    <img data-src="https://picsum.photos/id/232/400" alt="" />
+    <img data-src="https://picsum.photos/id/231/400" alt="" />
+    <img data-src="https://picsum.photos/id/223/400" alt="" />
+    <img data-src="https://picsum.photos/id/212/400" alt="" />
+    <img data-src="https://picsum.photos/id/125/400" alt="" />
+    <img data-src="https://picsum.photos/id/134/400" alt="" />
+
+    <script>
+      let images = document.querySelectorAll("img");
+
+      document.addEventListener("DOMContentLoaded", () => {
+        let observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            let { target, isIntersecting } = entry;
+            if (isIntersecting) {
+              let src = target.dataset.src;
+              target.src = src;
+            }
+          });
+        });
+
+        images.forEach(img => {
+          observer.observe(img);
+        });
+      });
+    </script>
+  </body>
+</html>
